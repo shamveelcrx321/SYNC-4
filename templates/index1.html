@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Gumber</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+
+<body>
+<div class="background-mesh"></div>
+
+<main class="glass-card fade-in" id="gameRoot">
+
+    <header class="game-header">
+        <div class="brand">
+            <span class="logo-icon">Q</span>
+            <h1>SYNC-4</h1>
+        </div>
+        <p class="subtitle" id="hackText">Decrypt the 4-digit sequence to synchronize.</p>
+    </header>
+
+    <section class="game-board">
+
+        <form method="POST" id="guessForm" class="input-container">
+            <input
+                type="number"
+                name="guess"
+                id="guessInput"
+                class="modern-input"
+                placeholder="0000"
+                maxlength="4"
+                required
+                {% if win %}disabled{% endif %}
+            >
+            <button
+                type="submit"
+                class="primary-btn"
+                {% if win %}disabled{% endif %}
+            >
+                Decrypt
+            </button>
+        </form>
+
+        <div class="history-section">
+            <div class="history-header">
+                <span>Sequence Log</span>
+                <span id="attemptsLabel" class="attempts-tag">
+                    Attempts: {{ guesses|length }}
+                </span>
+            </div>
+
+            <div class="history-table-header">
+                <span style="font-size: large;">Input</span>
+                <span style="font-size: large;">Present</span>
+                <span style="font-size: large;">Position</span>
+            </div>
+
+            <ul id="historyList" class="history-list">
+                {% for g in guesses %}
+                <li class="history-item">
+                    <span>{{ g.guess }}</span>
+                    <span>{{ g.count }}</span>
+                    <span>{{ g.poscounter }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <div id="winModal" class="modal-overlay {% if not win %}hidden{% endif %}">
+        <div class="modal-card">
+            <div class="success-icon">✓</div>
+            <h2>Sequence Synchronized</h2>
+            <p class="result-details">
+                Cycles Executed: {{ guesses|length }}
+            </p>
+            <button id="restartBtn" class="secondary-btn">
+                Reinitialize Protocol
+            </button>
+        </div>
+    </div>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
