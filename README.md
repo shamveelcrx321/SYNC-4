@@ -42,8 +42,8 @@ The game encourages structured thinking, where every input helps narrow down the
 ## 👥 Contributors
 
 - **Jasem Saleh** — Game logic and conceptual design  
-- **Shamveel C** — Programming and implementation  
-- **Aboobacker Sidhique** — Error handling and validations  
+- **Shamveel C** 
+- **Aboobacker Sidhique** 
 
 ---
 
