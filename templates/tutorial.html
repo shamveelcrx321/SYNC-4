@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Play | SYNC-4</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+
+<body>
+
+<div class="background-mesh"></div>
+
+<main class="glass-card fade-in">
+
+    
+
+    <header class="game-header">
+        <div class="brand">
+            <span class="logo-icon">Q</span>
+            <h1>How to Play</h1>
+        </div>
+        <p class="subtitle">
+            Understand the protocol before attempting decryption.
+        </p>
+    </header>
+
+    <section class="game-board">
+
+        <div class="instruction-block">
+            <p>
+                The system generates a hidden 4-digit sequence.
+                Your objective is to decrypt this sequence using logical guesses.
+            </p>
+
+            <p>
+                For every attempt, the system provides structured feedback:
+            </p>
+
+            <ul>
+                <li><strong>Input</strong> — The 4-digit number you submitted</li>
+                <li><strong>Present</strong> — Digits that exist in the sequence</li>
+                <li><strong>Position</strong> — Digits in the correct position</li>
+            </ul>
+
+            <p>
+                Use previous attempts to eliminate possibilities and
+                progressively synchronize the correct sequence.
+            </p>
+
+            <p>
+                The protocol is complete when all four digits
+                are in the correct position.
+            </p>
+        </div>
+        <div class="backbuttondiv">
+          <a href="/" class="backbutton">
+            Back to Game
+          </a>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
