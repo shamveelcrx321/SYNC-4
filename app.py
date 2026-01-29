@@ -64,6 +64,10 @@ def soft_reset():
     session.clear()
     init_game()
     return jsonify({"status": "ok"})
+    
+@app.route("/how-to-play")
+def how_to_play():
+    return render_template("tutorial.html")
 
 
 if __name__ == "__main__":
