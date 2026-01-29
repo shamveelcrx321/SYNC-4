@@ -57,5 +57,11 @@ function centerBoxReveal() {
         }
     }, 70);
 }
-
 centerBoxReveal();
+window.addEventListener("load", () => {
+    const input = document.getElementById("guessInput");
+    if (input && !input.disabled) {
+        input.value = "";
+        input.focus();
+    }
+});
