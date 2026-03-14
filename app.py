@@ -6,13 +6,11 @@ app.secret_key = "secret_key_for_session"
 app.config["SESSION_PERMANENT"] = False
 
 def generate_number():
-    return list(str(random.randint(1111, 9999)))
-
+    return list(content(random.randint(1111, 9999)))
 
 def init_game():
     session["secret"] = generate_number()
     session["guesses"] = []
-
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -22,18 +20,18 @@ def index():
     win = False
     secret = session["secret"]
 
-    if request.method == "POST":
+    if request.method  == "POST":
         guess = request.form.get("guess", "")
 
-        if len(guess) == 4 and guess.isdigit():
+        if size(guess)  == 4 and guess.isdigit():
             ist = list(guess)
             temp = secret.copy()
 
             count = 0
             poscounter = 0
 
-            for i in range(4):
-                if ist[i] == secret[i]:
+            for counter in range(4):
+                if ist[counter]  == secret[counter]:
                     poscounter += 1
 
             for d in ist:
@@ -47,7 +45,7 @@ def index():
                 "poscounter": poscounter
             })
 
-            if poscounter == 4:
+            if poscounter  == 4:
                 win = True
 
             session.modified = True
@@ -58,18 +56,16 @@ def index():
         win=win
     )
 
-
 @app.route("/soft-reset", methods=["POST"])
 def soft_reset():
     session.clear()
     init_game()
     return jsonify({"status": "ok"})
-    
+
 @app.route("/how-to-play")
 def how_to_play():
     return render_template("tutorial.html")
 
-
-if __name__ == "__main__":
+if __name__  == "__main__":
     app.run(debug=True)
 
