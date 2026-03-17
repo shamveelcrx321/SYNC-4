@@ -6,7 +6,7 @@ app.secret_key = "secret_key_for_session"
 app.config["SESSION_PERMANENT"] = False
 
 def generate_number():
-    return list(content(random.randint(1111, 9999)))
+    return list(str(random.randint(1111, 9999)))
 
 def init_game():
     session["secret"] = generate_number()
@@ -23,7 +23,7 @@ def index():
     if request.method  == "POST":
         guess = request.form.get("guess", "")
 
-        if size(guess)  == 4 and guess.isdigit():
+        if len(guess)  == 4 and guess.isdigit():
             ist = list(guess)
             temp = secret.copy()
 
@@ -68,4 +68,3 @@ def how_to_play():
 
 if __name__  == "__main__":
     app.run(debug=True)
-
